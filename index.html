@@ -17,14 +17,18 @@
     <input id="btn-cash" type="button" value="OK" onclick="cashButton()">
     <hr>
     <p>Hur länge vill du spela?</p>
+    <p id="speltimer">00:00:00</p>
+    <hr>
     <select name="Time" id="time">
         <option value="5">5 min</option>
         <option value="15">15 min</option>
         <option value="30">30 min</option>
+        <option value="45">45 min</option>
         <option value="60">1h</option>
         <option value="120">2h</option>
     </select>
-    <input id="btn-time" type="button" value="OK" onclick="timeButton()">
+    <input id="btn-time" type="button" value="OK" onclick="timeButton(), gameTimer()">
+    <p id="speltid"></p>
     <script src="./assets/js/main.js"></script>
 </body>
 </html>
