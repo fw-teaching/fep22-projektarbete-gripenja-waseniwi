@@ -8,6 +8,8 @@
     <title>Casino</title>
 </head>
 <body>
+    <p id="counter"></p>
+    <hr>
     <p>Ange din ålder (18+) och mängden pengar du vill spela med.</p>
 
     <input id="age" type="number" placeholder="Ålder">
@@ -20,14 +22,14 @@
     <p id="speltimer">00:00:00</p>
     <hr>
     <select name="Time" id="time">
+        <option value="1">1 min</option>
         <option value="5">5 min</option>
         <option value="15">15 min</option>
         <option value="30">30 min</option>
         <option value="45">45 min</option>
         <option value="60">1h</option>
-        <option value="120">2h</option>
     </select>
-    <input id="btn-time" type="button" value="OK">
+    <input id="btn-time" type="button" value="Start">
     <p id="speltid"></p>
     <script src="./assets/js/main.js"></script>
 </body>
