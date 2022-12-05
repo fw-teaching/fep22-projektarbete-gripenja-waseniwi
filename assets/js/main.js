@@ -6,32 +6,32 @@ console.log('main.js init'); // För att se att skriptet laddats in
 navigator.geolocation.getCurrentPosition(success)
 
 function success(pos) {
-const location = pos.coords;
+    const location = pos.coords;
 
-console.log(`Platform: ${navigator.platform}
+    console.log(`Platform: ${navigator.platform}
 Webbläsare: ${navigator.appName}
 Resolution: ${screen.availWidth} x ${screen.availHeight}
 Fönsterstorlek: ${window.innerWidth} x ${window.innerHeight}
 Longitud: ${location.longitude}
 Latitud : ${location.latitude}`);
-    
-  }
+
+}
 
 
 
-function gameCounter(){
-if(localStorage.getItem('visitCount'))
-{
-    let currentCount = localStorage.getItem('visitCount');
-    document.querySelector("#counter").innerText= `
+function gameCounter() {
+    if (localStorage.getItem('visitCount')) {
+        let currentCount = localStorage.getItem('visitCount');
+        document.querySelector("#counter").innerText = `
     Du har besökt sidan ${localStorage.getItem('visitCount')} gånger.`;
-    
-    currentCount++;
-    localStorage.setItem('visitCount', currentCount);
 
-}else {
-    localStorage.setItem('visitCount', 1);
-}}
+        currentCount++;
+        localStorage.setItem('visitCount', currentCount);
+
+    } else {
+        localStorage.setItem('visitCount', 1);
+    }
+} gameCounter()
 
 function ageButton() {
     const age = document.querySelector("#age").value;
@@ -94,9 +94,9 @@ function timerHandler() {
         minutes = minutes < 10 ? '0' + minutes : minutes;
         hours = hours < 10 ? '0' + hours : hours;
 
-        timer.innerHTML = `${hours}:${minutes}:${seconds}`;
+        timer.innerHTML = `${minutes}:${seconds}`;
 
-        console.log(time)
+
 
         if (time <= 0) {
             clearInterval(gameTimer);
@@ -104,3 +104,20 @@ function timerHandler() {
         }
     }, 1000)
 } document.querySelector("#btn-time").addEventListener('click', timerHandler);
+
+
+document.querySelectorAll('#memory > img').forEach((elem) => {
+    elem.addEventListener('mouseover', (evt) => {
+        evt.target.style.border = '5px solid red';
+    });
+    elem.addEventListener('mouseout', (evt) => {
+        evt.target.style.border = '0px';
+    });
+});
+
+document.querySelectorAll('#memory > img').forEach((elem) => {
+    elem.addEventListener('click', () => {
+        elem.toggleAttribute(elem.setAttribute('src', elem.getAttribute('data-front')))
+    })
+}
+);
