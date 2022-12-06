@@ -115,9 +115,22 @@ document.querySelectorAll('#memory > img').forEach((elem) => {
     });
 });
 
+
+
+
 document.querySelectorAll('#memory > img').forEach((elem) => {
+    const front = `./assets/images/card_${elem.id}.png`;
+    const back = `./assets/images/card_back.png`;
+    let state = true;
+    let img = elem;
     elem.addEventListener('click', () => {
-        elem.toggleAttribute(elem.setAttribute('src', elem.getAttribute('data-front')))
+        if (state) {
+            elem.setAttribute("src", front);
+            state = false;
+        }else{
+            elem.setAttribute("src", back);
+            state = true;
+        }
     })
 }
 );
