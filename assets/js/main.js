@@ -33,6 +33,21 @@ function gameCounter() {
     }
 } gameCounter()
 
+function nameButton(){
+    let fname = 0;  
+    let lname = 0;
+    fname = document.querySelector("#fname").value;
+    lname = document.querySelector("#lname").value;
+    const username = lname + fname.slice(0, 2);
+    if (fname == 0 || lname == 0){
+        alert("Fyll i både för- och efternamn!");
+    }
+    if (fname != 0 && lname != 0){
+        document.querySelector("#användarnamn").innerText = `Välkommen ` + fname + `! Ditt användarnamn är ` + username + `.`
+    }
+}
+
+
 function ageButton() {
     const age = document.querySelector("#age").value;
     console.log(age);
