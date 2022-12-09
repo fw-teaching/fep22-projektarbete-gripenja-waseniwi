@@ -38,12 +38,32 @@ const date = new Date();
 const hours = String(date.getHours()).padStart(2, '0');
 const minutes = String(date.getMinutes()).padStart(2, '0');
 const seconds = String(date.getSeconds()).padStart(2, '0');
+let d = new Date();
+d.setDate(d.getDate() + (((1 + 7 - d.getDay()) % 7) || 7));
+let distance = d - date;
+let days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  let hours1 = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  let minutes1 = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  let seconds1 = Math.floor((distance % (1000 * 60)) / 1000);
 document.querySelector("#date").innerText = `Idag är det den ` + date.getDate() + `.` + (date.getMonth()+1) + `.` + date.getFullYear() + ` kl ` + hours + `:` + minutes + `:` + seconds;
+if(date.getDay() % 5){
+    alert("Casinot är stängt! Välkommen tillbaka om " + days + "d " + hours + "h "
+    + minutes + "m " + seconds + "s ");
+}
 }
 setInterval(date, 1000);
-if(date.getDay == 3 || date.getDay == 6){
-    document.querySelector("closed").innerHTML = "I have changed!";
+
+function changeColor(){
+    let red = document.querySelector("#sliderRed").value;
+    let green = document.querySelector("#sliderGreen").value;
+    let blue = document.querySelector("#sliderBlue").value;
+    let color = 'rgb(' + red + ',' + green + ',' + blue + ')';
+    document.body.style.color = color;
 }
+document.querySelector("#sliderRed").addEventListener('input',changeColor);
+document.querySelector("#sliderGreen").addEventListener('input',changeColor);
+document.querySelector("#sliderBlue").addEventListener('input',changeColor);
+
 function nameButton(){
     let fname = 0;  
     let lname = 0;
@@ -58,6 +78,16 @@ function nameButton(){
     }
 }
 
+let dropdown = document.querySelector('#select');
+
+dropdown.addEventListener('change', function () {
+    const color = dropdown.value;
+    if(color === 'default'){
+        document.body.style.backgroundColor = '#ffffff';
+    }else {
+        document.body.style.backgroundColor = color;
+    }
+})
 
 function ageButton() {
     const age = document.querySelector("#age").value;
