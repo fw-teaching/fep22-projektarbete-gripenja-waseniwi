@@ -97,13 +97,14 @@ function ageButton() {
     }
 }
 let cash = Number(document.querySelector("#cash").value);
-function cashButton() {
+function cashButton() { 
     cash = Number(document.querySelector("#cash").value);
     if(cash<=0){alert("För lite pengar"); cash=0;}
     else{
-    console.log(`Du har ${cash} pengar`)
+    console.log(`Du valde ${cash} pengar`)
+    console.log(cash)
     document.querySelector("#currentcash").innerHTML=`Du har ${cash} pengar`}
-}
+} document.querySelector("#btn-cash").addEventListener('click', cashButton);
 
 function timeButton() {
     const d = new Date();
