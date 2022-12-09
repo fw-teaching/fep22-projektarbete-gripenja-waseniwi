@@ -66,11 +66,13 @@ function ageButton() {
         alert("Minimiåldern för att spela är 18")
     }
 }
-
+let cash = Number(document.querySelector("#cash").value);
 function cashButton() {
-    const cash = document.querySelector("#cash").value;
-    console.log(cash)
-    cash.replace(",", ".")
+    cash = Number(document.querySelector("#cash").value);
+    if(cash<=0){alert("För lite pengar"); cash=0;}
+    else{
+    console.log(`Du har ${cash} pengar`)
+    document.querySelector("#currentcash").innerHTML=`Du har ${cash} pengar`}
 }
 
 function timeButton() {
