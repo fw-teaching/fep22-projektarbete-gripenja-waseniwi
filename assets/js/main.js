@@ -33,6 +33,17 @@ function gameCounter() {
     }
 } gameCounter()
 
+function date(){
+const date = new Date();
+const hours = String(date.getHours()).padStart(2, '0');
+const minutes = String(date.getMinutes()).padStart(2, '0');
+const seconds = String(date.getSeconds()).padStart(2, '0');
+document.querySelector("#date").innerText = `Idag är det den ` + date.getDate() + `.` + (date.getMonth()+1) + `.` + date.getFullYear() + ` kl ` + hours + `:` + minutes + `:` + seconds;
+}
+setInterval(date, 1000);
+if(date.getDay == 3 || date.getDay == 6){
+    document.querySelector("closed").innerHTML = "I have changed!";
+}
 function nameButton(){
     let fname = 0;  
     let lname = 0;
