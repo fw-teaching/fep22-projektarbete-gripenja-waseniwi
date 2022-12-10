@@ -17,22 +17,12 @@ for (item of ssp) {
 
 
 //bet button
-/*
-let bet = document.querySelector("#insats");
-document.querySelector("#btn-bet").addEventListener('click', () => {
-    bet = document.querySelector("#insats");
-    console.log(`Du satsar ${bet.value} pengar`)
-    if (cash > bet) {
-        console.log(`2. Du satsar ${bet} pengar`)
-    } else if (cash <= 0) { alert("Du har inga pengar!") }
-    else if (bet > cash) { alert("För stor insats") }
-}) */
-
 let bet = Number(document.querySelector("#insats").value);
 function betButton() { 
     bet = Number(document.querySelector("#insats").value);
     if(bet<=0){alert("För liten insats"); document.querySelector("#insats").value=0;}
     else{
+    document.querySelector("#DuSatsar").innerText = `Du satsar ${bet} pengar`
     console.log(`Du satsar ${bet} pengar`)
     console.log(bet)
     if (bet>cash){document.querySelector("#insats").value=0; alert("för lite pengar"); console.log("bet: "+bet)}
@@ -51,18 +41,28 @@ document.querySelectorAll(`#ssp > input`).forEach((elem) => {
             let bet = Number(document.querySelector("#insats").value);
             if (elem.value == item.Name) {
                 if (item.W === random.Name) {
+                    document.querySelector("#gamestatus1").innerText = `Du valde ${item.Name}
+        Datorn valde ${random.Name}!`
                     console.log("WIN");
                     cash += bet * 2;
                     console.log(`Du har ${cash}`)
                     document.querySelector("#currentcash").innerHTML=`Du har ${Number(cash)} pengar`
+                    document.querySelector("#gamestatus").innerText = `Du vann ${bet * 2}!`
                 }
                 else if (item.L === random.Name) {
+                    document.querySelector("#gamestatus1").innerText = `Du valde ${item.Name}
+        Datorn valde ${random.Name}!`
                     console.log("LOSE")
                     cash -= bet;
                     console.log(`Du har ${cash}`)
                     document.querySelector("#currentcash").innerHTML=`Du har ${Number(cash)} pengar`
+                    document.querySelector("#gamestatus").innerText = `Du förlorade ${bet}`
                 }
-                else { console.log("DRAW") }
+                else {
+                    document.querySelector("#gamestatus1").innerText = `Du valde ${item.Name}
+        Datorn valde ${random.Name}!`
+                     console.log("DRAW")
+                     document.querySelector("#gamestatus").innerText = `Oavgjort!` }
             }
         })
     })

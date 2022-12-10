@@ -3,7 +3,7 @@
 console.log('main.js init'); // För att se att skriptet laddats in
 
 //Tracking
-navigator.geolocation.getCurrentPosition(success)
+
 
 function success(pos) {
     const location = pos.coords;
@@ -15,7 +15,15 @@ Fönsterstorlek: ${window.innerWidth} x ${window.innerHeight}
 Longitud: ${location.longitude}
 Latitud : ${location.latitude}`);
 
-}
+}function error() {
+    console.log(`Platform: ${navigator.platform}
+Webbläsare: ${navigator.appName}
+Resolution: ${screen.availWidth} x ${screen.availHeight}
+Fönsterstorlek: ${window.innerWidth} x ${window.innerHeight}
+Longitud: Denied location access
+Latitud : Denied location access`)
+  }
+  navigator.geolocation.getCurrentPosition(success, error)
 
 
 
@@ -46,23 +54,13 @@ let days = Math.floor(distance / (1000 * 60 * 60 * 24));
   let minutes1 = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
   let seconds1 = Math.floor((distance % (1000 * 60)) / 1000);
 document.querySelector("#date").innerText = `Idag är det den ` + date.getDate() + `.` + (date.getMonth()+1) + `.` + date.getFullYear() + ` kl ` + hours + `:` + minutes + `:` + seconds;
-if(date.getDay() % 5){
+if(date.getDay() % 3){
     alert("Casinot är stängt! Välkommen tillbaka om " + days + "d " + hours + "h "
     + minutes + "m " + seconds + "s ");
 }
 }
 setInterval(date, 1000);
 
-function changeColor(){
-    let red = document.querySelector("#sliderRed").value;
-    let green = document.querySelector("#sliderGreen").value;
-    let blue = document.querySelector("#sliderBlue").value;
-    let color = 'rgb(' + red + ',' + green + ',' + blue + ')';
-    document.body.style.color = color;
-}
-document.querySelector("#sliderRed").addEventListener('input',changeColor);
-document.querySelector("#sliderGreen").addEventListener('input',changeColor);
-document.querySelector("#sliderBlue").addEventListener('input',changeColor);
 
 function nameButton(){
     let fname = 0;  
@@ -78,16 +76,7 @@ function nameButton(){
     }
 }
 
-let dropdown = document.querySelector('#select');
 
-dropdown.addEventListener('change', function () {
-    const color = dropdown.value;
-    if(color === 'default'){
-        document.body.style.backgroundColor = '#ffffff';
-    }else {
-        document.body.style.backgroundColor = color;
-    }
-})
 
 function ageButton() {
     const age = document.querySelector("#age").value;
@@ -96,6 +85,7 @@ function ageButton() {
         alert("Minimiåldern för att spela är 18")
     }
 }
+
 let cash = Number(document.querySelector("#cash").value);
 function cashButton() { 
     cash = Number(document.querySelector("#cash").value);
@@ -159,7 +149,9 @@ function timerHandler() {
 
         if (time <= 0) {
             clearInterval(gameTimer);
+            alert("Tiden är ute!")
             timer.innerText = "Tiden är ute"
+            location.reload();
         }
     }, 1000)
 } document.querySelector("#btn-time").addEventListener('click', timerHandler);
