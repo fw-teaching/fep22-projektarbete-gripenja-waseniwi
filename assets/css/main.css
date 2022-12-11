@@ -1,5 +1,6 @@
 /* Site-wide styling here */
 body {
+  margin: 0;
     background-color: #ffffff;
 }
 .container {
@@ -10,3 +11,47 @@ body {
     height: 40px;
     width: 100px;
   }
+
+  nav
+  {
+      z-index:1;
+      word-spacing: 10px;
+      padding:10px;
+      font-size: 16px;
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: rgb(255, 255, 255);
+      text-shadow: 1px 1px rgb(185, 185, 185);  
+      border-bottom: 2px solid;
+  }
+  nav a
+{
+    color:black;
+}
+
+nav a:hover 
+{
+    color: hsl(0, 0%, 61%);
+}
+
+#memory img
+{
+  flex-direction: row;
+  display: flex;
+  padding: 5px;
+  width: 100px;
+  
+}
+
+#memory
+{
+  margin: 150px;
+  flex-direction: row;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+@media (max-width: 800px) {
+  #memory {
+    flex-direction: column;
+  }
+}
