@@ -14,26 +14,24 @@ for (item of ssp) {
     <input id="${item.Name}" type="button" value="${item.Name}">`
 }
 
-
-
 //bet button
 let bet = Number(document.querySelector("#insats").value);
-function betButton() { 
+function betButton() {
     bet = Number(document.querySelector("#insats").value);
-    if(bet<=0){alert("För liten insats"); document.querySelector("#insats").value=0;}
-    else{
-    document.querySelector("#DuSatsar").innerText = `Du satsar ${bet} pengar`
-    console.log(`Du satsar ${bet} pengar`)
-    console.log(bet)
-    if (bet>cash){document.querySelector("#insats").value=0; alert("för lite pengar"); console.log("bet: "+bet)}
-}
+    if (bet <= 0) { alert("För liten insats"); document.querySelector("#insats").value = 0; }
+    else {
+        document.querySelector("#DuSatsar").innerText = `Du satsar ${bet} pengar`
+        console.log(`Du satsar ${bet} pengar, du har ${cash}`)
+        console.log(bet)
+        if (bet > localStorage.getItem("cash", cash)) { document.querySelector("#insats").value = 0; alert("för lite pengar"); console.log("bet: " + bet); console.log("LS cash: " + localStorage.getItem(Number(cash))) }
+    }
 } document.querySelector("#btn-bet").addEventListener('click', betButton);
 
 //Spellogik
 document.querySelectorAll(`#ssp > input`).forEach((elem) => {
     elem.addEventListener('click', () => {
-        if (document.querySelector("#insats").value>cash){document.querySelector("#insats").value=0; alert("för lite pengar"); console.log("bet: "+bet+" cash: "+cash)}
-        if(bet<=0){alert("För liten insats"); document.querySelector("#insats").value=0;}
+        if (bet <= 0) { alert("För liten insats"); document.querySelector("#insats").value = 0; }
+        if (bet > localStorage.getItem("cash")) { document.querySelector("#insats").value = 0; bet = 0; alert("för lite pengar"); console.log("bet: " + bet + " cash: " + cash) }
 
         const random = ssp[Math.floor(Math.random() * ssp.length)];
         console.log("Datorn valde " + random.Name)
@@ -44,10 +42,11 @@ document.querySelectorAll(`#ssp > input`).forEach((elem) => {
                     document.querySelector("#gamestatus1").innerText = `Du valde ${item.Name}
         Datorn valde ${random.Name}!`
                     console.log("WIN");
-                    cash += bet * 2;
+                    cash += (bet * 2);
                     console.log(`Du har ${cash}`)
-                    document.querySelector("#currentcash").innerHTML=`Du har ${Number(cash)} pengar`
+                    document.querySelector("#currentcash").innerHTML = `Du har ${Number(cash)} pengar`
                     document.querySelector("#gamestatus").innerText = `Du vann ${bet * 2}!`
+                    localStorage.setItem("cash", cash)
                 }
                 else if (item.L === random.Name) {
                     document.querySelector("#gamestatus1").innerText = `Du valde ${item.Name}
@@ -55,14 +54,16 @@ document.querySelectorAll(`#ssp > input`).forEach((elem) => {
                     console.log("LOSE")
                     cash -= bet;
                     console.log(`Du har ${cash}`)
-                    document.querySelector("#currentcash").innerHTML=`Du har ${Number(cash)} pengar`
+                    document.querySelector("#currentcash").innerHTML = `Du har ${Number(cash)} pengar`
                     document.querySelector("#gamestatus").innerText = `Du förlorade ${bet}`
+                    localStorage.setItem("cash", cash)
                 }
                 else {
                     document.querySelector("#gamestatus1").innerText = `Du valde ${item.Name}
         Datorn valde ${random.Name}!`
-                     console.log("DRAW")
-                     document.querySelector("#gamestatus").innerText = `Oavgjort!` }
+                    console.log("DRAW")
+                    document.querySelector("#gamestatus").innerText = `Oavgjort!`
+                }
             }
         })
     })
