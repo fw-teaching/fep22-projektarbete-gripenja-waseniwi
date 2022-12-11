@@ -54,7 +54,7 @@ let days = Math.floor(distance / (1000 * 60 * 60 * 24));
   let minutes1 = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
   let seconds1 = Math.floor((distance % (1000 * 60)) / 1000);
 document.querySelector("#date").innerText = `Idag är det den ` + date.getDate() + `.` + (date.getMonth()+1) + `.` + date.getFullYear() + ` kl ` + hours + `:` + minutes + `:` + seconds;
-if(date.getDay() % 3){
+if(date.getDay() % 5){
     alert("Casinot är stängt! Välkommen tillbaka om " + days + "d " + hours + "h "
     + minutes + "m " + seconds + "s ");
 }
@@ -62,8 +62,6 @@ if(date.getDay() % 3){
 setInterval(date, 1000);
 
 
-localStorage.setItem("localColor", document.querySelector("#localColor"));
-localStorage.getItem("localColor");
 function nameButton(){
     let fname = 0;  
     let lname = 0;
