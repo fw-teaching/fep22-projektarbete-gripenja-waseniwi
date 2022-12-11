@@ -5,15 +5,33 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/css/main.css"> 
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <title>Casino</title>
 </head>
 <body> 
+    
+      
     <nav>
+        <ul class="menu">
         <a href="./index.html">Hem</a>
         <a href="./pages/memory.html">Mini-Memory</a>
         <a href="./pages/ssp.html">Sten-sax-påse</a>
         <a href="./pages/bildgalleri.html">Bildgalleri</a>
-    </div>
+        </ul>
+        <button class="hamburger">
+        <i class="menuIcon material-icons">menu</i>
+        <i class="closeIcon material-icons">close</i>
+      </button>
+    </nav>
+    <select id="vdag">
+        <option value="må">Måndag</option>
+        <option value="ti">Tisdag</option>
+        <option value="on">Onsdag</option>
+        <option value="to">Torsdag</option>
+        <option value="fr">Fredag</option>
+        <option value="lö">Lördag</option>
+        <option value="sö">Söndag</option>
+    </select>
     <p id="counter"></p>
     <p id="date"></p>
     <div class="container" id="localColor">

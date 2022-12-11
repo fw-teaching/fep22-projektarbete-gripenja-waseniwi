@@ -52,16 +52,14 @@ let days = Math.floor(distance / (1000 * 60 * 60 * 24));
   let minutes1 = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
   let seconds1 = Math.floor((distance % (1000 * 60)) / 1000);
 document.querySelector("#date").innerText = `Idag är det den ` + date.getDate() + `.` + (date.getMonth()+1) + `.` + date.getFullYear() + ` kl ` + hours + `:` + minutes + `:` + seconds;
-if(date.getDay() % 3){
+
+if(date.getDay() % 5 || document.querySelector("#vdag").value == lö || document.querySelector("#vdag").value == sö){
     alert("Casinot är stängt! Välkommen tillbaka om " + days + "d " + hours + "h "
     + minutes + "m " + seconds + "s ");
 }
 }
 setInterval(date, 1000);
 
-
-function nameButton(){
-    let fname = 0;  
 function nameButton() {
     let fname = 0;
     let lname = 0;
@@ -172,36 +170,22 @@ document.querySelectorAll('#memory > img').forEach((elem) => {
         evt.target.style.border = '0px';
     });
 });
+const menu = document.querySelector(".menu");
+const menuItems = document.querySelectorAll(".menuItem");
+const hamburger= document.querySelector(".hamburger");
+const closeIcon= document.querySelector(".closeIcon");
+const menuIcon = document.querySelector(".menuIcon");
 
-
-
-
-const lightbox = document.createElement('div');
-lightbox.id = 'lightbox';
-document.body.appendChild(lightbox);
-const images = document.querySelector("#lightboximg");
-images.forEach(image => {
-    image.addEventListener('click', e => {
-       lightbox.classList.add('active'); 
-       const img = document.createElement('img');
-       img.src = image.src
-       lightbox.appendChild(img)
-    })
+function toggleMenu() {
+  if (menu.classList.contains("showMenu")) {
+    menu.classList.remove("showMenu");
+    closeIcon.style.display = "none";
+    menuIcon.style.display = "block";
+  } else {
+    menu.classList.add("showMenu");
+    closeIcon.style.display = "block";
+    menuIcon.style.display = "none";
+  }
 }
-);
 
-const lightbox = document.createElement('div');
-lightbox.id = 'lightbox';
-document.body.appendChild(lightbox);
-const images = document.querySelector("#lightboximg");
-images.forEach(image => {
-    image.addEventListener('click', e => {
-       lightbox.classList.add('active'); 
-       const img = document.createElement('img');
-       img.src = image.src
-       lightbox.appendChild(img)
-    })
-})
-lightbox.addEventListener('click', e => {
-    lightbox.classList.remove('active')
-})
+hamburger.addEventListener("click", toggleMenu);
