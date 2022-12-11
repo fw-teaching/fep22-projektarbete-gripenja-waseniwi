@@ -64,6 +64,8 @@ document.querySelector("#sliderRed").addEventListener('input',changeColor);
 document.querySelector("#sliderGreen").addEventListener('input',changeColor);
 document.querySelector("#sliderBlue").addEventListener('input',changeColor);
 
+localStorage.setItem("localColor", document.querySelector("#localColor"));
+localStorage.getItem("localColor");
 function nameButton(){
     let fname = 0;  
     let lname = 0;
@@ -193,3 +195,19 @@ document.querySelectorAll('#memory > img').forEach((elem) => {
     })
 }
 );
+
+const lightbox = document.createElement('div');
+lightbox.id = 'lightbox';
+document.body.appendChild(lightbox);
+const images = document.querySelector("#lightboximg");
+images.forEach(image => {
+    image.addEventListener('click', e => {
+       lightbox.classList.add('active'); 
+       const img = document.createElement('img');
+       img.src = image.src
+       lightbox.appendChild(img)
+    })
+})
+lightbox.addEventListener('click', e => {
+    lightbox.classList.remove('active')
+})
