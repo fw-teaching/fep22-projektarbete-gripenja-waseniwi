@@ -60,6 +60,10 @@ function date() {
 setInterval(date, 1000);
 
 
+localStorage.setItem("localColor", document.querySelector("#localColor"));
+localStorage.getItem("localColor");
+function nameButton(){
+    let fname = 0;  
 function nameButton() {
     let fname = 0;
     let lname = 0;
@@ -162,7 +166,44 @@ function timerHandler() {
 } document.querySelector("#btn-time").addEventListener('click', timerHandler);
 
 
+document.querySelectorAll('#memory > img').forEach((elem) => {
+    elem.addEventListener('mouseover', (evt) => {
+        evt.target.style.border = '5px solid red';
+    });
+    elem.addEventListener('mouseout', (evt) => {
+        evt.target.style.border = '0px';
+    });
+});
 
 
 
 
+const lightbox = document.createElement('div');
+lightbox.id = 'lightbox';
+document.body.appendChild(lightbox);
+const images = document.querySelector("#lightboximg");
+images.forEach(image => {
+    image.addEventListener('click', e => {
+       lightbox.classList.add('active'); 
+       const img = document.createElement('img');
+       img.src = image.src
+       lightbox.appendChild(img)
+    })
+}
+);
+
+const lightbox = document.createElement('div');
+lightbox.id = 'lightbox';
+document.body.appendChild(lightbox);
+const images = document.querySelector("#lightboximg");
+images.forEach(image => {
+    image.addEventListener('click', e => {
+       lightbox.classList.add('active'); 
+       const img = document.createElement('img');
+       img.src = image.src
+       lightbox.appendChild(img)
+    })
+})
+lightbox.addEventListener('click', e => {
+    lightbox.classList.remove('active')
+})
