@@ -1,48 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../assets/css/main.css"> <!-- importera main-CSS-->
-    <link rel="stylesheet" href="../assets/css/ssp.css"> <!-- importera sidspecifik CSS vid behov -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../assets/css/main.css" />
+    <!-- importera main-CSS-->
+    <link rel="stylesheet" href="../assets/css/ssp.css" />
+    <!-- importera sidspecifik CSS vid behov -->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
     <title>Sten, sax & påse</title>
-</head>
-<body>
+  </head>
+  <body>
     <nav>
-        <a href="/index.html">Hem</a>
-        <a href="/pages/memory.html">Mini-Memory</a>
-        <a href="/pages/ssp.html">Sten-sax-påse</a>
+      <ul class="menu">
+        <a class="menuItem" href="/index.html">Hem</a>
+        <a class="menuItem" href="/pages/memory.html">Mini-Memory</a>
+        <a class="menuItem" href="/pages/ssp.html">Sten-sax-påse</a>
+        <a class="menuItem" href="/pages/bildgalleri.html">Bildgalleri</a>
+      </ul>
+      <button class="hamburger">
+        <i class="menuIcon material-icons">menu</i>
+        <i class="closeIcon material-icons">close</i>
+      </button>
     </nav>
     <p id="counter"></p>
     <p id="date"></p>
     <p>Hur länge vill du spela?</p>
     <p id="speltimer">00:00</p>
     <select name="Time" id="time">
-        <option value="1">1 min</option>
-        <option value="5">5 min</option>
-        <option value="15">15 min</option>
-        <option value="30">30 min</option>
-        <option value="45">45 min</option>
-        <option value="60">1h</option>
+      <option value="1">1 min</option>
+      <option value="5">5 min</option>
+      <option value="15">15 min</option>
+      <option value="30">30 min</option>
+      <option value="45">45 min</option>
+      <option value="60">1h</option>
     </select>
-    <input id="btn-time" type="button" value="Start">
+    <input id="btn-time" type="button" value="Start" />
     <p id="speltid"></p>
-    <input id="cash" type="number" placeholder="Pengar">
-    <input id="btn-cash" type="button" value="OK">
+    <input id="cash" type="number" placeholder="Pengar" />
+    <input id="btn-cash" type="button" value="OK" />
     <p id="currentcash"></p>
     <!--<input id="btn-save" type="Button" value="Spara Pengar"> -->
     <div id="Bet">
-        <input id="insats" type="number" placeholder="Hur mycket vill du satsa?">
-        <input id="btn-bet" type="button" value="BET"><br>
+      <input
+        id="insats"
+        type="number"
+        placeholder="Hur mycket vill du satsa?"
+      />
+      <input id="btn-bet" type="button" value="BET" /><br />
     </div>
     <p id="DuSatsar"></p>
     <div id="ssp"></div>
     <p id="gamestatus1"></p>
     <p id="gamestatus"></p>
 
-
-    <script src="../assets/js/main.js"></script> <!-- importera main.js (OBS ../ )-->
-    <script src="../assets/js/ssp.js"></script> <!-- importera sidspecifik JS -->
-</body>
+    <script src="../assets/js/main.js"></script>
+    <!-- importera main.js (OBS ../ )-->
+    <script src="../assets/js/ssp.js"></script>
+    <!-- importera sidspecifik JS -->
+  </body>
 </html>

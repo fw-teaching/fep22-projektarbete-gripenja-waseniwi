@@ -1,49 +1,53 @@
 /* Site-wide styling here */
 body {
   margin: 0;
-    background-color: #ffffff;
+  background-color: #ffffff;
 }
 .container {
-    display: flex;
-    justify-content: space-between;
-  }
-  button {
-    height: 40px;
-    width: 100px;
-  }
-
-  nav
-  {
-      z-index:1;
-      word-spacing: 10px;
-      padding:10px;
-      font-size: 16px;
-      font-family: Arial, Helvetica, sans-serif;
-      background-color: rgb(255, 255, 255);
-      text-shadow: 1px 1px rgb(185, 185, 185);  
-      border-bottom: 2px solid;
-  }
-  nav a
-{
-    color:black;
+  display: flex;
+  justify-content: space-between;
+}
+button {
+  height: 40px;
+  width: 100px;
+}
+.hamburger {
+  position: fixed;
+  z-index: 100;
+  top: 5px;
+  right: 5px;
+  padding: 4px;
+  border: black solid 1px;
+  background: white;
+  cursor: pointer;
+}
+.closeIcon {
+  display: none;
+}
+.menu {
+  transform: translateY(-200%);
+  transition: transform 0.2s;
+  background: rgb(255, 255, 255);
+  color: white;
+  list-style: none;
+  padding-top: 0;
+}
+.showMenu {
+  transform: translateY(0);
+}
+.menuItem {
+  font-size: larger;
+  gap: 30px;
 }
 
-nav a:hover 
-{
-    color: hsl(0, 0%, 61%);
-}
-
-#memory img
-{
+#memory img {
   flex-direction: row;
   display: flex;
   padding: 5px;
   width: 100px;
-  
 }
 
-#memory
-{
+#memory {
   margin: 150px;
   flex-direction: row;
   display: flex;
